@@ -218,6 +218,11 @@ public class ParametersDefinitionProperty extends OptionalJobProperty<Job<?, ?>>
         public String getDisplayName() {
             return Messages.ParametersDefinitionProperty_DisplayName();
         }
+
+        @Override
+        public JobProperty<?> newInstance(StaplerRequest req, JSONObject formData) throws FormException {
+            return formData.has("parameterDefinitions") ? super.newInstance(req, formData) : null;
+        }
     }
 
     public String getDisplayName() {
